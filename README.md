@@ -1,6 +1,9 @@
 # Unison Senior Quality Engineer Mini-Project
-For this mini-project you will need to complete 2 steps. This project will assess your written communication skills,
-ability to generate test plans for both manual and automated tests, and create automated tests for a simple API.
+For this mini-project you will need to complete 2 steps. The first will be to come up with a test plan to test
+a fictional notepad application that includes a web user interface, a reminder notification system, and a RESTful
+API. The second step will be to create some automated tests for the API. This project will assess your written
+communication skills, ability to generate test plans for both manual and automated tests, and create automated tests
+for a simple API.
 
 _**Please fork this repository and send us the Github link when you are finished. Be prepared to present your plans to
 a small team.**_
@@ -9,6 +12,29 @@ a small team.**_
 This project is to test a simple notepad application. The only working part of the application is the API. The application
 allows you to create and manage notes and to also schedule a reminder for the note. The included server contains full CRUD
 operations but does not persist the data when shut down. So you will need to add new data each time.
+
+### The User Interface
+The user interface only exists as a design. Please consider the design and how you would proceed with testing
+this application. Include this into your test plan.
+
+![UI Image](docs/images/ui.png)
+
+You should be able to create a test plan based on the provided design. No UI automation
+tests are needed for this project.
+
+### The Reminder Architecture
+The reminder architecture consists of the following design. Again, please consider how you might test this aspect
+of the application and include it into your test plan.
+
+![Reminder Architecture](docs/images/reminders.png)
+
+This is not functional in this project and is simply here to show a high level design
+of how something like this might be implemented. In this design the database emits a change
+event, and a Lambda function listens for those changes. If a schedule has been set
+then the handler will schedule an email to be sent to the user when the scheduled time passes.
+
+Again, no automation is necessary for this, but please include it in your test plans.
+
 
 ### The Notepad API
 The Notepad API contains full CRUD operations. The following table described the endpoints available:
@@ -57,38 +83,20 @@ The server will start on port 3000. If you have issues using that port you can s
 and set the value to something that will be suitable for your system. You can view the swagger documentation for the
 API by browsing to this URL [http://localhost:3000/documentation](http://localhost:3000/documentation). Change the port
 to the correct value is you are not using the default.
-
-### The User Interface
-The user interface only exists as a design.
-
-![UI Image](docs/images/ui.png)
-
-You should be able to create a test plan based on the provided design. No UI automation
-tests are needed for this project.
-
-### The Reminder Architecture
-The reminder architecture consists of the following design:
-
-![Reminder Architecture](docs/images/reminders.png)
-
-This is not functional in this project and is simply here to show a high level design
-of how something like this might be implemented. In this design the database emits a change
-event, and a Lambda function listens for those changes. If a schedule has been set
-then the handler will schedule an email to be sent to the user when the scheduled time passes.
-
-Again, no automation is necsarry for this, but you may include it in your test plans.
-
 # The Project
 What we would like are the following items created by you:
 * A set of test plans that can cover testing the application. It is up to you 
   as to how much you think should be tested and the extent of the plan. These plans can
-  be markdown or simple text files stored in the `docs` directory. If can also store
+  be markdown or simple text files stored in the `docs` directory. You can also store
   word files or provide links to Google docs if you prefer.
     
 * Automation tests for the API. This can be in your language of choice, but we would 
   prefer JavaScript or Python. You should make it easy to run the tests allowing us to
   check your work by cloning the repository and executing them per your instructions. Please
   store your tests in the `tests` directory.
+  
+* Describe how you would fit the automated tests into a CI/CD pipeline. You can create a separate document
+  or include the information as part of the information about how to execute the automated tests. 
   
 * Any other documentation you think will help us in understanding your work can also go into the
   `docs` directory.
